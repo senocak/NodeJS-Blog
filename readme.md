@@ -46,10 +46,4 @@ Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile 
 - Kullanabilmek için `index.js` içerisine: `const fileUpload = require("express-fileupload");`  yazarak aktif edebilir.
 
 
-#express-fileupload
->Json Dosylarını kullanarak veritabanına hızlı kayıt yapabiliriz.
-- Kurmak için konsola: `npm install mongoose-seeder` 
-- Kullanabilmek için `index.js` içerisine: `var seeder = require('mongoose-seeder')`  yazarak aktif edebilir.
-
-
 https://vegibit.com/node-js-blog-tutorial/
