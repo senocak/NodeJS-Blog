@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr-TR" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" />
+        <title>Anıl Şenocak - NodeJS</title>
+        <meta property="og:title" content="Anıl Şenocak - NodeJS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.yusufsezer.com.tr/dosyalar/2016/12/varsayilan.jpg" />
+        <meta property="og:image:width" content="450" />
+        <meta property="og:image:height" content="250" />
+        <meta property="og:site_name" content="Anıl Şenocak - NodeJS" />
+        <meta property="og:description" content="NodeJS ile geliştirilmiştir." />
+        <meta name="theme-color" content="#FEC632" />
+        <style>
+            body { background-color: #eee; color: #333;  }
+            a { color: #333; }
+            .content a { color: #0056b3; }
+            .bg-warning { background-color: #FEC632 !important; }
+            .pagination > li > a, .pagination > li > span { color: #333 !Important; }
+            article h2 { font-size: 20px; margin: 15px 0; }
+            article .content p:first-child { color: #888; font-size: 110%; }
+            .list-group a { padding: 5px 10px; border: none; }
+            pre { line-height: normal; position: relative; }
+            pre code { padding: 10px !important; border-left: 4px solid #ff6600; }
+            article { word-wrap: break-word; }
+            article img { max-width: 100%; height: auto; }
+            table, th, td { border: 1px solid #333; border-collapse: collapse; }
+            th, td { padding: 3px; }
+        </style>
+        <script src="https://cdn.ckeditor.com/4.11.4/full-all/ckeditor.js"></script>
+    </head>
+    <body>
+        <header class="bg-warning text-lg-left text-center pt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-1 d-md-none"><i class="fas fa-bars fa-2x pt-1" onclick="sideMenu(event)"></i></div>
+                    <div class="col-11 col-md-9"><h1 class="h2"><a href="/">Anıl Şenocak</a></h1></div>
+                    <div class="col">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="/cv">CV</a>
+                            <a class="btn btn-danger" href="/admin">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container mt-3">
+                <div class="row">
+                    <section class="col-md-9">
+                        @!section('content')
+                    </section>
+                    <aside class="col-md-3 d-none d-md-block p-0">
+                        <section class="bg-white mb-2 shadow-sm text-center p-2">
+                            <figure class="mb-2">
+                                <img class="rounded-circle" src="/pp.gif" alt="Anıl Şenocak" title="Anıl Şenocak" width="128" height="128" />
+                                <figcaption class="mt-2"><h3>Anıl Şenocak</h3></figcaption>
+                            </figure>
+                            <a href="https://tr.linkedin.com/in/anilsenocak" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="https://github.com/senocak" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                            <div class="text-left mt-2" style="text-align: justify !important;">Software Engineer who interested about Web Technologies(JS Based), Algorithms, Artificial Intelligence; constantly exploring new technologies.</div>
+                        </section>
+                        @!section('kategoriler')
+                        <section class="bg-white mb-2 border">
+                            <header class="bg-light p-2"><h3 class="h5">Son Yorumlar</h3></header>
+                            <nav class="list-group">
+                                <a href="/ado-net/" class="list-group-item list-group-item-action" title="ADO.NET">ADO.NET</a>
+                            </nav>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-warning" style="position: f ixed;bottom: 0;width: 100%;">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <div class="col-md-3 text-md-left p-2 order-12 order-md-first"><q>Anıl Şenocak</q> &copy; 2018 </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        CKEDITOR.replace( 'editor1' );
+    </script>
+</html>
+<!-- https://www.yusufsezer.com.tr -->

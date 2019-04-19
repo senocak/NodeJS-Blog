@@ -1,0 +1,55 @@
+#express
+>Express.js Node.js tabanlı web uygulama sunucu çatısı. 
+Express.js, tek sayfa, çoklu sayfa ve hibrit web uygulamaları geliştirmeye yönelik tasarlanmıştır.
+Routing işlemlerinde ve daha birçok işlemde bize kolaylık sağlar. Express.js'de temel http metotlarının haricinde bir de `ALL` metodu mevcuttur.
+- Github adresi için [tıklayınız](https://github.com/expressjs/express)
+- Kurmak için konsola: `npm install express --save` 
+
+
+#nodemon
+>Node.js kullanırken en büyük sıkıntılardan biri de değişikliklerin aktif olması için server'ı sürekli yeniden başlatmak zorunda kalmamızdı.
+İşte nodemon bizi bu sıkıntıdan kurtaran bir modül.
+Klasörlerimizi izleyip bir değişiklik gördüğü anda kendisi otomatik olarak server'ımızı yeniden başlatıyor bizi manual olarak yeniden başlatma derdinden kurtarıyor.
+- Github adresi için [tıklayınız](https://github.com/remy/nodemon)
+- Kurmak için konsola: `npm install nodemon`
+Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile başlatmamız yeterli. 
+
+
+#route
+>Express.js içerisindeki routing özelliği olarak türemiştir. 
+**GET**, **POST**, **DELETE**, **PUT** işlemlerinde istek türüne özel olarak yapıyı ayırmamızı sağlar.
+- Kullanabilmek için `index.js` içerisine: `var router = express.Router();`  yazarak aktif edebilir. 
+- `router.get("/login", controller.authLogin);` yazarak routing işlemini gerçekleştirebiliriz.
+
+
+#express-edge
+>Express içerisinde edge template motorunu kullanarak view dosyalarımızı oluşturmak için kullanıyoruz.
+- Kurmak için konsola: `npm i express-edge --save` 
+- Kullanabilmek için `index.js` içerisine: `const expressEdge = require('express-edge');`  yazarak aktif edebilir.
+
+
+#mongoose
+>MongoDB yani belge odaklı bir veritabanı kullanacağımız zaman mongoose adlı kütüphaneyi kullanmalıyız.
+- Kurmak için konsola: `npm i mongoose --save` 
+- Kullanabilmek için `index.js` içerisine: `var mongoose = require('mongoose');`  yazarak aktif edebilir.
+
+
+#body-parser
+>JSON istek yapılan sunucudan gelen JSON data’yı okuyabilmemiz için de body-parser'a ihtiyacımız vardır.
+- Kurmak için konsola: `npm install body-parser --save` 
+- Kullanabilmek için `index.js` içerisine: `var bodyParser = require('body-parser');`  yazarak aktif edebilir.
+
+
+#express-fileupload
+>Kütüphanesi view taradından gönderilen dosyaları işleyip sistemimize kaydetmemizi sağlar.
+- Kurmak için konsola: `npm i express-fileupload --save` 
+- Kullanabilmek için `index.js` içerisine: `const fileUpload = require("express-fileupload");`  yazarak aktif edebilir.
+
+
+#express-fileupload
+>Json Dosylarını kullanarak veritabanına hızlı kayıt yapabiliriz.
+- Kurmak için konsola: `npm install mongoose-seeder` 
+- Kullanabilmek için `index.js` içerisine: `var seeder = require('mongoose-seeder')`  yazarak aktif edebilir.
+
+
+https://vegibit.com/node-js-blog-tutorial/

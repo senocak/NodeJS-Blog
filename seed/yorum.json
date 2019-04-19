@@ -1,0 +1,13 @@
+{
+    "yorum": {
+        "_model": "Yorum",
+        "foo": {
+            "_id": ObjectId("5cb85b91672c8a5edc1428a5"),
+            "yazi": ObjectId("5cb850b6e94e6a4ddc57ef45"),
+            "email": "teah.iyanah@buycow.or",
+            "yorum" : "1Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+            "tarih" : ISODate("2019-04-18T14:12:17.799+03:00")
+    
+        }
+    }
+}

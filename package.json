@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-blog",
+  "version": "1.0.0",
+  "description": "NodeJS ve MongoDB kullanarak basit blog projesi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anıl Şenocak",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-edge": "^1.0.0",
+    "express-fileupload": "^1.1.4",
+    "mongoose": "^5.5.1",
+    "mongoose-seeder": "^1.2.1",
+    "nodemon": "^1.18.11"
+  }
+}

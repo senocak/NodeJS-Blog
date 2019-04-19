@@ -1,0 +1,36 @@
+@layout('layouts.app')
+@section('content')
+    <form action="/admin/kategori/ekle" method="POST" encType="multipart/form-data">
+        <div class="container">
+            <div class="row ">
+                <div class="form-group mt-1 col-6">
+                    <input type="text" name="baslik" placeholder="Başlık" class="form-control" required>
+                </div>
+                <div class="form-group mt-1 col-xs-2">
+                    <input type="file" name="resim" class="form-control-file" required>
+                </div>
+                <div class="col-xs-">
+                    <button class="btn btn-primary">Kategori Ekle</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <table class="table table-striped w-auto">
+        <thead><tr><th>#</th><th>Başlık</th><th>Url</th><th>Tarih</th><th>İşlemler</th></tr></thead>
+        <tbody>
+            @each(kategori in kategoriler)
+                <tr>
+                    <td></td>
+                    <td>{{ kategori.baslik }}</td>
+                    <td>{{ kategori.url }}</td>
+                    <td>{{ kategori.tarih }}</td>
+                    <td>
+                        <a href="/admin/kategori/{{ kategori._id }}/duzenle" class="btn btn-primary">Düzenle</a>
+                        <a href="/admin/kategori/{{ kategori._id }}/sil" class="btn btn-danger">Sil</a>    
+                    </td>
+                </tr>
+            @endeach
+        </tbody>
+      </table>
+@endsection

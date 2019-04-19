@@ -1,0 +1,72 @@
+@layout('layouts.app')
+@section('content')
+    @each(yazi in yazilar)
+        <nav>
+            <ol class="breadcrumb bg-white border mb-2" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <li class="breadcrumb-item"><a href="/" >Anasayfa</a></li>
+                @each(uk in yazi.kategori) 
+                    <li class="breadcrumb-item"><a href="/kategori/{{ uk.url }}" itemprop="url" title=".NET">{{ uk.baslik }}</a></li>
+                @endeach
+                <li class="breadcrumb-item active">{{ yazi.baslik }}</li>
+            </ol>
+        </nav>
+        <article class="bg-white border mb-2">
+            <header class="bg-light p-2">
+                <h1 class="h5 m-0" style="float:right; text-align:right;">{{ yazi.tarih.toDateString() }}</h1>
+                <h1 class="h4 m-1">{{ yazi.baslik }}</h1>
+            </header>
+            @each(uk in yazi.kategori)
+                <img src="/kategori/{{ uk.resim }}">
+            @endeach
+            <div class="content p-2" style="text-align:justify"><p>{{{yazi.icerik}}}</p></div>
+        </article>
+        <section class="bg-white shadow-sm p-2 clearfix">
+            <figure class="pl-3 pt-2 pr-3 float-left"><img class="rounded-circle" src="/pp.gif" alt="Yusuf SEZER" title="Yusuf SEZER" width="128" height="128"></figure>
+            <div class="float-none mt-2">
+                <h4>Anıl Şenocak</h4>
+                <p  style="text-align:justify">Software Engineer who interested about Web Technologies(JS Based), Algorithms, Artificial Intelligence; constantly exploring new technologies.</p>
+                <a href="https://tr.linkedin.com/in/anilsenocak" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="https://github.com/senocak" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+            </div>
+        </section>
+    @endeach
+    <hr>
+    <form method="POST" action="/yazi/yorum/ekle">
+        <div class="form-group">
+            <input type="email" name="email"  class="form-control" placeholder="Email Adresiniz">
+            <textarea class="form-control" rows="2" name="yorum" placeholder="Yorumunuz" style="resize:none"></textarea>
+            @each(yazi in yazilar) 
+                <input type="hidden" name="yazi_id" value="{{ yazi._id }}" readonly>
+                <input type="hidden" name="yazi_url" value="{{ yazi.url }}" readonly>
+            @endeach
+            <button type="submit" class="btn btn-primary btn-block">Yorum Yaz</button>
+        </div>
+    </form>
+    <hr>
+    <section class="bg-white shadow-sm p-2 clearfix"> 
+        @each(yorum in yorumlar)
+            <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="/pp.gif" width="50px">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{yorum.email}}</h5> <a style="float:right; text-align:right;">{{ yorum.tarih.toDateString() }}</a>
+                        {{yorum.yorum}}
+                    </div>
+                </div>
+                <hr>
+        @else
+            İlk Yorum Yazan Sen Ol 
+        @endeach
+    </section>
+    <br>
+@endsection
+
+@section('kategoriler')
+    <section class="bg-white mb-2 border">
+        <header class="bg-light p-2"><h3 class="h5">Kategoriler</h3></header>
+        <nav class="list-group">
+            @each(k in kategoriler)
+                <a href="/kategori/{{k.url}}" class="list-group-item list-group-item-action" title="{{k.baslik}}">{{k.baslik}}</a>
+            @endeach
+        </nav>
+    </section>
+@endsection

@@ -1,0 +1,45 @@
+@layout('layouts.app')
+@section('content')
+    @each(user in yazilar)
+        <article class="bg-white border mb-2">
+            <header class="bg-light p-2">
+                <h2 class="h5 m-0">
+                    <a href="/yazi/{{ user.url }}" title="{{ user.baslik }}">{{ user.baslik }}</a> 
+                    @each(uk in user.kategori)
+                        <a href="/kategori/{{ uk.url }}" class="badge badge-secondary" style="float:right; text-align:right;">{{ uk.baslik }}</a>
+                    @endeach
+                </h2>
+            </header>
+            <a href="/yazi/{{ user.url }}">
+                @each(uk in user.kategori)
+                    <img src="/kategori/{{ uk.resim }}">
+                @endeach
+            </a>
+            <div class="p-2" style="text-align: justify;">{{user.icerik.substring(0, 1000).replace(/(<([^>]+)>)/ig,"")}}</div>
+        </article>
+    @else
+        Yazı Bulunamadı.
+    @endeach
+    <nav>
+        <ul class="pagination justify-content-center">
+            @each(number in range(1, toplam+1))
+                @if(aktif == number) 
+                    <li class="page-item"><a class="page-link font-weight-bold">{{number}}</a></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="/sayfa/{{number}}">{{ number }}</a></li>
+                @endif 
+            @endeach
+        </ul>
+    </nav>
+@endsection
+
+@section('kategoriler')
+    <section class="bg-white mb-2 border">
+            <header class="bg-light p-2"><h3 class="h5">Kategoriler</h3></header>
+            <nav class="list-group">
+                @each(k in kategoriler)
+                    <a href="/kategori/{{k.url}}" class="list-group-item list-group-item-action" title="{{k.baslik}}">{{k.baslik}}</a>
+                @endeach
+            </nav>
+        </section>
+@endsection
