@@ -4,7 +4,8 @@
   "description": "NodeJS ve MongoDB kullanarak basit blog projesi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon index.js"
   },
   "author": "Anıl Şenocak",
   "license": "ISC",
@@ -14,7 +15,7 @@
     "express-edge": "^1.0.0",
     "express-fileupload": "^1.1.4",
     "mais-mongoose-seeder": "^1.0.7",
-    "mongoose": "^5.5.2",
+    "mongoose": "^5.5.1",
     "mongoose-seeder": "^1.2.1",
     "nodemon": "^1.18.11"
   }

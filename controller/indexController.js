@@ -8,7 +8,7 @@ module.exports.cv = async(req, res)=>{
     console.log("cv");
 }
 module.exports.index = async(req, res)=>{
-    const limit = 4;
+    const limit = 3;
     var sira = req.params.sira;
     var aktif = sira;
     if (typeof sira === "undefined" | sira == "1") {
@@ -19,10 +19,15 @@ module.exports.index = async(req, res)=>{
         sira = sira * limit;
     }
     const yazilar = await Yazi.find({}).populate('kategori').sort({ tarih: -1 }).limit(limit).skip(sira); //.count()
-    var toplam = await Yazi.find({}).count();
-    toplam = toplam / limit;
-    const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
-    res.render("index", {yazilar, toplam, aktif, kategoriler});
+    const aktif_sayfa_yazilar = await Yazi.find({}).populate('kategori').sort({ tarih: -1 }).limit(limit).skip(sira).count()
+    if (aktif_sayfa_yazilar == "0") {
+        res.redirect('/'); // If there is no post at all. It will redirect forever.
+    }else{
+        var toplam = await Yazi.find({}).count();
+        toplam = toplam / limit;
+        const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
+        res.render("index", {yazilar, toplam, aktif, kategoriler});
+    }
 }
 module.exports.yorumEklePost = async(req, res)=>{
     const myobj = { 

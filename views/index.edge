@@ -15,7 +15,7 @@
                     <img src="/kategori/{{ uk.resim }}">
                 @endeach
             </a>
-            <div class="p-2" style="text-align: justify;">{{user.icerik.substring(0, 1000).replace(/(<([^>]+)>)/ig,"")}}</div>
+            <div class="p-2" style="text-align: justify;">{{user.icerik.substring(0, 500).replace(/(<([^>]+)>)/ig,"")}}</div>
         </article>
     @else
         Yazı Bulunamadı.
