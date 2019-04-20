@@ -46,4 +46,4 @@ Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile 
 - Kullanabilmek için `index.js` içerisine: `const fileUpload = require("express-fileupload");`  yazarak aktif edebilir.
 
 
-https://vegibit.com/node-js-blog-tutorial/
+Projeyi çalıştırmak için nodejs ve mongodb yüklü olduğunu varsayarsak. Sadece bu dizine gidip "npm install" komutunu konsol ekranında koşmak ve browserdan "http://localhost:4000" adresini ziyaret etmek olacaktır.
