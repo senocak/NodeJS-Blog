@@ -1,0 +1,35 @@
+@layout('layouts.app')
+@section('content')
+    <div class="row">
+        <div class="col-lg-6">
+            <form method="POST" action="/admin/login" encType="multipart/form-data">
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email adresiniz" required="required" autofocus="autofocus" autocomplete="on"  value="lorem@ipsum.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input type="password" name="sifre" class="form-control" placeholder="Şifreniz" required="required" autocomplete="off" value="lorem">
+                    </div>
+                </div> 
+                <input type="submit" class="btn btn-success btn-block" value="Giriş Yap">
+            </form>
+        </div>
+        <div class="col-lg-6">
+            <form method="POST" action="/admin/register">
+                <div class="form-group">
+                    <div class="form-label-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email adresiniz" required="required" autofocus="autofocus" autocomplete="on"  >
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        <input type="password" name="sifre" class="form-control" placeholder="Password" required="required" autocomplete="off">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Kayıt Ol">
+            </form>
+        </div>
+    </div>
+@endsection

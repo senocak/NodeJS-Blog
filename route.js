@@ -3,12 +3,18 @@ var router = express.Router();
 var indexController = require("./controller/indexController");
 var YaziController = require("./controller/YaziController");
 var kategoriController = require("./controller/kategoriController");
+var AuthController = require("./controller/AuthController");
 
 router.get("/", indexController.index);
 router.get("/cv", indexController.cv);
 router.get("/sayfa/:sira", indexController.index);
 router.get("/yazi/:yazi_url", indexController.yazi);
 router.post("/yazi/yorum/ekle", indexController.yorumEklePost);
+
+
+router.get("/admin", AuthController.indexGet);
+router.post("/admin/login", AuthController.indexLoginPost);
+router.post("/admin/register", AuthController.indexRegisterPost);
 
 router.get("/admin/yazi/ekle", YaziController.yaziEkleGet);
 router.post("/admin/yazi/ekle", YaziController.yaziEklePost);

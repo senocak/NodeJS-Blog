@@ -1,13 +1,14 @@
 var path = require('path');
-var express = require("express");
+var express = require("express"); 
 const Yazi = require("../model/Yazi");
 const Kategori = require("../model/Kategori");
 const Yorum = require("../model/Yorum");
 
 module.exports.cv = async(req, res)=>{
     console.log("cv");
+    res.send("cv");
 }
-module.exports.index = async(req, res)=>{
+module.exports.index = async(req, res, next)=>{ 
     const limit = 3;
     var sira = req.params.sira;
     var aktif = sira;

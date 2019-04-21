@@ -1,3 +1,9 @@
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/nodejs', {useNewUrlParser: true}).then(()=>console.error('Seed Completed. Close the connection by using Ctrl+C')).catch(err => console.error('Something wrong', err))
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 const Kategori = require('./model/Kategori');
 Kategori.collection.drop(); 
 Kategori.create([{ _id:"5cb9bb7ab9acda2d6cf92b32", baslik: 'Dimebag Darrell', url: 'dimebag-darrell', resim: 'dimebag-darrell.jpg' }])
@@ -13,5 +19,8 @@ Yorum.collection.drop();
 Yorum.create([{ _id:"5cb9bb7ab9acda2d6cf92b36", email: 'lorem@ipsum.com', yorum: 'I love Dimebag Darrell', yazi: '5cb9bb7ab9acda2d6cf92b34' }])
 Yorum.create([{ _id:"5cb9bb7ab9acda2d6cf92b37", email: 'lorem2@ipsum2.com', yorum: 'I love Zakk Wylde', yazi: '5cb9bb7ab9acda2d6cf92b35' }])
 
-
-module.exports = Kategori, Yazi, Yorum;
+const Kullanici = require('./model/Kullanici');
+Kullanici.collection.drop(); 
+Kullanici.create([{ _id:"5cb9bb7ab9acda2d6cf92b37", email: 'lorem@ipsum.com', sifre: 'lorem' }])
+ 
+//module.exports = Kategori, Yazi, Yorum, Kullanici;
