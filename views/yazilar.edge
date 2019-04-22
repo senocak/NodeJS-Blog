@@ -1,0 +1,24 @@
+@layout('layouts.app')
+@section('content')
+    <a href="/admin/kategori/ekle" class="btn btn-success btn-block">Yazı Ekle</a>
+    <table class="table table-striped w-auto">
+        <thead><tr><th>Kategori</th><th>Başlık</th><th>Tarih</th><th>İşlemler</th></tr></thead>
+        <tbody>
+            @each(y in yazilar)
+                <tr>
+                    <td>
+                        @each(k in y.kategori) 
+                            <a href="/admin/kategori/{{ k._id }}" class="btn btn-success">{{ k.baslik }}</a>
+                        @endeach
+                    </td>
+                    <td><a href="/yazi/{{ y.url }}" target="_blank">{{ y.baslik }}</a></td>
+                    <td>{{ y.tarih.toDateString() }}</td>
+                    <td>
+                        <a href="/admin/yazi/{{ y._id }}/duzenle" class="btn btn-primary">Düzenle</a>
+                        <a href="/admin/yazi/{{ y._id }}/sil" class="btn btn-danger" onclick="return confirm('Silmek İstediğinize Emin Misiniz?')">Sil</a>
+                    </td>
+                </tr>
+            @endeach
+        </tbody>
+      </table>
+@endsection

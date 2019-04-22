@@ -2,21 +2,21 @@
 @section('content')
     <style> table, tr, td, th { border: none; } </style>
     @each(k in kategori)
-        <table class="table">  
+        <table class="table">
             <form action="/admin/kategori/{{k._id}}/duzenle" method="POST" encType="multipart/form-data">
-                <tr> 
-                    <td><input type="text" disabled placeholder="Başlık" class="form-control" value="{{k.baslik}}"></td>
-                    <td><input type="text" name="baslik" placeholder="Başlık" class="form-control"></td>
-                </tr>
-                
-                <tr> 
-                    <td><img src="/kategori/{{k.resim}}" width="150px"> <img src="/no.jpg" width="150px" id="imgview"></td>
-                    <td><input type="file" name="resim" class="form-control-file" onchange="showimagepreview(this)"></td>
-                </tr>
-                <tr> 
-                    <td></td>
-                    <td><button class="btn btn-primary">Kategori Ekle</button></td>
-                </tr>
+                <div class="row row-no-gutters">
+                    <div class="col-sm-12"><input type="text" name="baslik" placeholder="Başlık" class="form-control w-100 p-3"  value="{{k.baslik}}"></div> 
+                </div>
+                <div class="row row-no-gutters">
+                    <div class="col-sm-6"><img src="/kategori/{{k.resim}}" width="150px"> <img src="/no.jpg" width="150px" id="imgview"></div>
+                    <div class="col-sm-6"><input type="file" name="resim" class="form-control-file" onchange="showimagepreview(this)"></div> 
+                </div>
+                <div class="row row-no-gutters">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary">Kategori Güncelle</button>
+                        <a class="btn btn-danger" href="/admin/kategori">Geri Dön</a>
+                    </div> 
+                </div>
             </form>
         </table> 
     @endeach

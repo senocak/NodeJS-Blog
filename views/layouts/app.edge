@@ -9,7 +9,6 @@
         <title>Anıl Şenocak - NodeJS</title>
         <meta property="og:title" content="Anıl Şenocak - NodeJS" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.yusufsezer.com.tr/dosyalar/2016/12/varsayilan.jpg" />
         <meta property="og:image:width" content="450" />
         <meta property="og:image:height" content="250" />
         <meta property="og:site_name" content="Anıl Şenocak - NodeJS" />
@@ -43,6 +42,11 @@
                 }
             }
         </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style> 
+            .dropdown-content {display: none;position: absolute;background-color: white;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);padding: 12px 16px;z-index: 1;}
+            .dropdown:hover .dropdown-content {display: block;}
+        </style>
     </head>
     <body>
         <header class="bg-warning text-lg-left text-center pt-2">
@@ -53,7 +57,18 @@
                     <div class="col">
                         <div class="btn-group">
                             <a class="btn btn-primary" href="/cv">CV</a>
-                            <a class="btn btn-danger" href="/admin">Login</a>
+                            @if(user.userId)
+                                <div class="dropdown">
+                                    <a class="btn btn-danger" href="#">{{ user.userEmail }}</a>
+                                    <div class="dropdown-content">
+                                        <a href="/admin/kategori">Kategoriler</a><br>
+                                        <a href="/admin/yazi">Yazılar</a><br>
+                                        <a href="/admin/logout">Çıkış Yap</a>
+                                    </div>
+                                </div>        
+                            @else
+                                <a class="btn btn-danger" href="/admin">Login</a>
+                            @endif
                         </div>
                     </div>
                 </div>

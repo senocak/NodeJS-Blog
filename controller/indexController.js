@@ -28,7 +28,8 @@ module.exports.index = async(req, res, next)=>{
         var toplam = await Yazi.find({}).countDocuments();
         toplam = toplam / limit;
         const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
-        res.render("index", {yazilar, toplam, aktif, kategoriler});
+        var user = {userId:req.session.userId, userEmail : req.session.userEmail }
+        res.render("index", {yazilar, toplam, aktif, kategoriler, user });
     }
 }
 module.exports.yorumEklePost = async(req, res)=>{
@@ -49,5 +50,6 @@ module.exports.yazi = async(req, res)=>{
     yazilar.forEach(element => { yazi_id = element._id; });
     const yorumlar = await Yorum.find({yazi:yazi_id}).sort({ tarih: -1 }).populate('yazi');
     const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
-    res.render("yazi", {yazilar, yorumlar, kategoriler});
+    var user = {userId:req.session.userId, userEmail : req.session.userEmail }
+    res.render("yazi", {yazilar, yorumlar, kategoriler, user});
 }

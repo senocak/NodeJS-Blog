@@ -7,7 +7,14 @@ const fs = require('fs')
 
 module.exports.kategoriListGet = async(req, res)=>{
     const kategoriler = await Kategori.find({}).sort({ tarih: -1 })
-    res.render("kategori_index", {kategoriler});
+    var user = {userId:req.session.userId, userEmail : req.session.userEmail }
+    res.render("kategori_index", {kategoriler, user});
+}
+module.exports.kategoriListByIdGet = async(req, res)=>{
+    const kategori_id = req.params.kategori_id
+    const kategoriler = await Kategori.find({"_id":kategori_id}).sort({ tarih: -1 })
+    var user = {userId:req.session.userId, userEmail : req.session.userEmail }
+    res.render("kategori_index", {kategoriler, user});
 }
 module.exports.kategoriEklePost = function(req, res) {
     if (Object.keys(req.files).length == 0) {
@@ -32,9 +39,8 @@ module.exports.kategoriSil = async(req, res)=>{
     kategori.forEach(element => { kategori_resim = element.resim; });
     try {
         fs.unlinkSync(__dirname+'/../public/kategori/'+kategori_resim);
-        Kategori.deleteOne({ _id: kategori_id }, function(err, obj) {});
+        Kategori.findOneAndRemove({ _id: kategori_id }, function(err, obj) {}); //deleteOne
         Yazilar.deleteMany({ kategori: kategori_id }, function(err, obj) {});
-        //findOneAndRemove
     } catch(err) {
         console.log("Dosya Silinme Hatası: "+err)
     }
@@ -43,7 +49,8 @@ module.exports.kategoriSil = async(req, res)=>{
 module.exports.kategoriDuzenleGet = async(req, res)=>{
     const kategori_id = req.params.kategori_id
     const kategori = await Kategori.find({_id:kategori_id})
-    res.render("kategori_duzenle",{kategori});
+    var user = {userId:req.session.userId, userEmail : req.session.userEmail }
+    res.render("kategori_duzenle",{kategori, user});
 }
 module.exports.kategoriDuzenlePost = async(req, res)=>{
     const kategori_id = req.params.kategori_id
@@ -73,9 +80,7 @@ module.exports.kategoriDuzenlePost = async(req, res)=>{
         if (err) console.log("Error:"+err);
         res.redirect('/admin/kategori');
     });
-    res.redirect('/admin/kategori');
 }
-
 String.prototype.url = function(){
     var string = this;
     var letters = { "İ": "i", "I": "i", "Ş": "s", "Ğ": "g", "Ü": "u", "Ö": "o", "Ç": "c" };

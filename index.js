@@ -13,18 +13,16 @@ const db = require("./db"); // db.js dosyamızı import ettik
 const cookieParser = require('cookie-parser'); //Cookie Parser Kütüphanesi
 app.use(cookieParser());  //Uygulamamızın Cookie Parser kütüphanesi kullanmasını için kullandık
 const session = require('express-session'); // Session işlemlerimiz için kullanılan kütüphane
-app.use(session({ 
-    name: "sid" ,
-    cookie:{
-        maxAge: 1000*60*60*2, //2 Saat
-        sameSite: true,
-        secure: false
-    },
+var redisStore  = require('connect-redis')(session);
+const redis = require('redis');
+const client  = redis.createClient();
+app.use(session({
+    store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl : 260}),
+    expires: new Date(Date.now() + (30 * 86400 * 1000)) ,
     secret: 'anil-senocak', 
     resave: true, 
     saveUninitialized: false, 
-}));  // Uygulamamızda session işlemini gerçekleştirmek için tanıttık.
-
+}));
 app.use(expressEdge); //    Uygulamamızın edge motorunu kullanacağını belirttik
 app.use(fileUpload());  // File Upload kütüphanesini kullanacağını belirttik
 app.use(bodyParser.json()) // Rest isteklerinde gelen veriyi daha iyi okumak için kullandık

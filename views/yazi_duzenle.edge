@@ -1,0 +1,33 @@
+@layout('layouts.app')
+@section('content')
+    @each(y in yazi) 
+        <form action="/admin/yazi/{{ y._id }}/duzenle" method="POST" encType="multipart/form-data">
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <input type="text" name="baslik" placeholder="Başlık" class="form-control" value="{{ y.baslik }}">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <select class="form-control" name="kategori">
+                        @each(yk in y.kategori)
+                            <option value="{{yk._id}}" selected readonly style="background-color:gray">{{yk.baslik}}</option>
+                        @endeach
+                        @each(kategori in kategoriler)
+                            <option value="{{kategori._id}}">{{kategori.baslik}}</option>
+                        @endeach
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls">
+                    <textarea name="icerik" placeholder="İçerik ..." cols="30" rows="10" class="form-control" id="editor1">{{ y.icerik }}</textarea>
+                </div>
+            </div>
+            <div class="form-group my-4 text-center">
+                <button class="btn btn-primary">Yazı Güncelle</button>
+                <a class="btn btn-danger" href="/admin/yazi">Geri Dön</a>
+            </div>
+        </form>
+    @endeach
+@endsection
