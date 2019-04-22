@@ -1,26 +1,26 @@
 var path = require('path');
 var express = require("express");
 const Yazi = require("../model/Yazi");
-const Kategoriler = require("../model/Kategori");
+const Kategori = require("../model/Kategori");
 
 module.exports.yaziEkleGet = async(req, res)=>{
-    const kategoriler = await Kategoriler.find({})
+    const kategoriler = await Kategori.find({}).sort({ tarih: -1 })
     var user = {userId:req.session.userId, userEmail : req.session.userEmail }
     res.render("yazi_ekle", {kategoriler, user});
 }
 module.exports.yaziListGet = async(req, res)=>{
     const yazilar = await Yazi.find({}).populate('kategori')
     var user = {userId:req.session.userId, userEmail : req.session.userEmail }
-    res.render("yazilar", {yazilar, user});
+    const kategoriler = await Kategori.find({}).sort({ tarih: -1 })
+    res.render("yazilar", {yazilar, user, kategoriler});
 }
 module.exports.yaziDuzenleGet = async(req, res)=>{
     const yazi_id = req.params.yazi_id
     const yazi = await Yazi.find({"_id":yazi_id}).populate('kategori')
-    const kategoriler = await Kategoriler.find({})
+    const kategoriler = await Kategori.find({}).sort({ tarih: -1 })
     var user = {userId:req.session.userId, userEmail : req.session.userEmail }
     res.render("yazi_duzenle", {kategoriler, yazi, user});
 }
-
 module.exports.yaziDuzenlePost = async(req, res)=>{
     const yazi_id = req.params.yazi_id
     var myobj = {baslik:req.body.baslik, icerik:req.body.icerik, kategori:req.body.kategori};
@@ -44,7 +44,6 @@ module.exports.yaziEklePost = async(req, res)=>{
 module.exports.yaziSilGet = async(req, res)=>{
     const yazi_id = req.params.yazi_id;
     Yazi.findOneAndRemove({ _id: yazi_id }, function(err, obj) {});
-        //findOneAndRemove
     res.redirect('/admin/yazi');
 }
 String.prototype.url = function(){

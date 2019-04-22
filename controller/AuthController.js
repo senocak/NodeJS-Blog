@@ -3,7 +3,8 @@ const Kullanici = require("../model/Kullanici");
 //const redis = require("../redis");
 
 module.exports.indexGet = async(req, res)=>{
-    res.render("auth");
+    const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
+    res.render("auth", { kategoriler});
 }
 module.exports.indexLoginPost = async(req, res)=>{
     const email = req.body.email;
@@ -50,8 +51,14 @@ module.exports.indexRegisterPost = async(req, res)=>{
         res.redirect("/admin/kategori");
     }
 }
-module.exports.indexRegisterPost = async(req, res)=>{
-    redis.del();
+module.exports.indexlogoutGet = async(req, res)=>{
+    req.session.destroy(function(err){
+        if(err){
+            console.log("Hata:"+err);
+        } else {
+            res.redirect('/admin');
+        }
+    });
 }
 module.exports.redirectLogin = (req, res, next)=>{
     if (!req.session.userId) {

@@ -5,7 +5,6 @@ const Kategori = require("../model/Kategori");
 const Yorum = require("../model/Yorum");
 
 module.exports.cv = async(req, res)=>{
-    console.log("cv");
     res.send("cv");
 }
 module.exports.index = async(req, res, next)=>{ 

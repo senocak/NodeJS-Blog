@@ -46,6 +46,12 @@ Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile 
 - Kullanabilmek için `index.js` içerisine: `const fileUpload = require("express-fileupload");`  yazarak aktif edebilir.
 
 
+#express-session
+>Kütüphanesi session(oturum) işlemleri için kullanıyoruz.
+- Kurmak için konsola: `npm i express-session --save` 
+- Kullanabilmek için `index.js` içerisine: `const session = require('express-session');`  yazarak aktif edebilir.
+
+
 #Redis
 >Redis açık kaynak kodlu, verilerin(session, cookie) hafızada tutuulduğu ve üzerinde çok hızlı işlem yapmamızı sağlayan bir yapı. NoSql formatındadır. 
 - Varsayılan port `6379`
@@ -53,3 +59,5 @@ Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile 
 
 #NOT
 >Projeyi çalıştırmak için nodejs ve mongodb yüklü olduğunu varsayarsak sadece bu dizine gidip `npm install` komutunu konsol ekranında koşmak ve browserdan `http://localhost:4000` adresini ziyaret etmek olacaktır. Ancak ekranda hiç gönderi kayıtlı olmadığını göreceksiniz. Bunun için konsol ekranında sadece seed.js dosyasını çalıştırarak `node seed.js` dummy verilerinin eklendiğini görebiliriz.
+- Session işlemlerinde loglarda `undefined` hatası alıyorsanız çözümü `redis-server.exe` çalışmadığı içindir.
+- 

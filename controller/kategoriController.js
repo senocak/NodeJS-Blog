@@ -50,7 +50,8 @@ module.exports.kategoriDuzenleGet = async(req, res)=>{
     const kategori_id = req.params.kategori_id
     const kategori = await Kategori.find({_id:kategori_id})
     var user = {userId:req.session.userId, userEmail : req.session.userEmail }
-    res.render("kategori_duzenle",{kategori, user});
+    const kategoriler = await Kategori.find({}).sort({ tarih: -1 })
+    res.render("kategori_duzenle",{kategori, user, kategoriler});
 }
 module.exports.kategoriDuzenlePost = async(req, res)=>{
     const kategori_id = req.params.kategori_id

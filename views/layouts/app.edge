@@ -90,7 +90,14 @@
                             <a href="https://github.com/senocak" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                             <div class="text-left mt-2" style="text-align: justify !important;">Software Engineer who interested about Web Technologies(JS Based), Algorithms, Artificial Intelligence; constantly exploring new technologies.</div>
                         </section>
-                        @!section('kategoriler')
+                        <section class="bg-white mb-2 border">
+                            <header class="bg-light p-2"><h3 class="h5">Kategoriler</h3></header>
+                            <nav class="list-group">
+                                @each(k in kategoriler)
+                                    <a href="/kategori/{{k.url}}" class="list-group-item list-group-item-action" title="{{k.baslik}}">{{k.baslik}}</a>
+                                @endeach
+                            </nav>
+                        </section>
                         <section class="bg-white mb-2 border">
                             <header class="bg-light p-2"><h3 class="h5">Son Yorumlar</h3></header>
                             <nav class="list-group">

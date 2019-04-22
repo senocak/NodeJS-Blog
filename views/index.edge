@@ -32,14 +32,3 @@
         </ul>
     </nav>
 @endsection
-
-@section('kategoriler')
-    <section class="bg-white mb-2 border">
-            <header class="bg-light p-2"><h3 class="h5">Kategoriler</h3></header>
-            <nav class="list-group">
-                @each(k in kategoriler)
-                    <a href="/kategori/{{k.url}}" class="list-group-item list-group-item-action" title="{{k.baslik}}">{{k.baslik}}</a>
-                @endeach
-            </nav>
-        </section>
-@endsection
