@@ -11,9 +11,19 @@ const db = require("./db"); // db.js dosyamızı import ettik
 //app.use(seed);  // Seed işlemi için kullanıyoruz
 
 const cookieParser = require('cookie-parser'); //Cookie Parser Kütüphanesi
-const session = require('express-session'); // Session işlemlerimiz için kullanılan kütüphane
 app.use(cookieParser());  //Uygulamamızın Cookie Parser kütüphanesi kullanmasını için kullandık
-app.use(session({ secret: 'anil-senocak', resave: false, saveUninitialized: true, }));  // Uygulamamızda session işlemini gerçekleştirmek için tanıttık.
+const session = require('express-session'); // Session işlemlerimiz için kullanılan kütüphane
+app.use(session({ 
+    name: "sid" ,
+    cookie:{
+        maxAge: 1000*60*60*2, //2 Saat
+        sameSite: true,
+        secure: false
+    },
+    secret: 'anil-senocak', 
+    resave: true, 
+    saveUninitialized: false, 
+}));  // Uygulamamızda session işlemini gerçekleştirmek için tanıttık.
 
 app.use(expressEdge); //    Uygulamamızın edge motorunu kullanacağını belirttik
 app.use(fileUpload());  // File Upload kütüphanesini kullanacağını belirttik
@@ -23,4 +33,5 @@ app.use(Route); //  Routing işlemi için kullanıyoruz.
 app.set('views', __dirname + '/views'); //  Edge motoru için view dosyalarının dizinin belirttik
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.listen(3000, () => { console.log('http://localhost:4000') });
+const port = 3000;
+app.listen(port, () => { console.log('http://localhost:'+port) });

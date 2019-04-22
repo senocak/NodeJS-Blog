@@ -16,9 +16,7 @@
     "express-edge": "^1.0.0",
     "express-fileupload": "^1.1.4",
     "express-session": "^1.16.1",
-    "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.5.1",
-    "mongoose-seeder": "^1.2.1",
     "nodemon": "^1.18.11",
     "redis": "^2.8.0"
   }

@@ -11,7 +11,7 @@ Routing işlemlerinde ve daha birçok işlemde bize kolaylık sağlar. Express.j
 İşte nodemon bizi bu sıkıntıdan kurtaran bir modül.
 Klasörlerimizi izleyip bir değişiklik gördüğü anda kendisi otomatik olarak server'ımızı yeniden başlatıyor bizi manual olarak yeniden başlatma derdinden kurtarıyor.
 - Github adresi için [tıklayınız](https://github.com/remy/nodemon)
-- Kurmak için konsola: `npm install nodemon`
+- Kurmak için konsola: `npm install -g nodemon`
 Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile başlatmamız yeterli. 
 
 

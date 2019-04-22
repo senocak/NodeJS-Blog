@@ -32,6 +32,17 @@
             th, td { padding: 3px; }
         </style>
         <script src="https://cdn.ckeditor.com/4.11.4/full-all/ckeditor.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+            function showimagepreview(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {$('#imgview').attr('src', e.target.result);}
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </head>
     <body>
         <header class="bg-warning text-lg-left text-center pt-2">

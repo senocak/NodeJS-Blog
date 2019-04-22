@@ -21,10 +21,10 @@
         <tbody>
             @each(kategori in kategoriler)
                 <tr>
-                    <td></td>
+                    <td><img src="/kategori/{{ kategori.resim }}" width="200px"></td>
                     <td>{{ kategori.baslik }}</td>
                     <td>{{ kategori.url }}</td>
-                    <td>{{ kategori.tarih }}</td>
+                    <td>{{ kategori.tarih.toDateString() }}</td>
                     <td>
                         <a href="/admin/kategori/{{ kategori._id }}/duzenle" class="btn btn-primary">Düzenle</a>
                         <a href="/admin/kategori/{{ kategori._id }}/sil" class="btn btn-danger">Sil</a>    

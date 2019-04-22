@@ -40,6 +40,42 @@ module.exports.kategoriSil = async(req, res)=>{
     }
     res.redirect('/admin/kategori');
 } 
+module.exports.kategoriDuzenleGet = async(req, res)=>{
+    const kategori_id = req.params.kategori_id
+    const kategori = await Kategori.find({_id:kategori_id})
+    res.render("kategori_duzenle",{kategori});
+}
+module.exports.kategoriDuzenlePost = async(req, res)=>{
+    const kategori_id = req.params.kategori_id
+    var myobj = {};
+    if (Object.keys(req.body.baslik).length != "0") {
+        myobj.baslik = req.body.baslik
+        myobj.url = (req.body.baslik).url();
+        if(req.files){
+            const resim = req.files.resim
+            myobj.resim = resim.name
+            resim.mv(path.resolve(__dirname+'/../public/kategori/'+resim.name),function(error){
+                // 1276 X 319
+                if (error)console.log("Hata:"+error);
+            })  
+        }
+    }else{
+        if(req.files){
+            const resim = req.files.resim
+            myobj.resim = resim.name
+            resim.mv(path.resolve(__dirname+'/../public/kategori/'+resim.name),function(error){
+                // 1276 X 319
+                if (error)console.log("Hata:"+error);
+            })  
+        }
+    }
+    Kategori.updateOne({"_id":kategori_id},myobj, (err, post) => {
+        if (err) console.log("Error:"+err);
+        res.redirect('/admin/kategori');
+    });
+    res.redirect('/admin/kategori');
+}
+
 String.prototype.url = function(){
     var string = this;
     var letters = { "İ": "i", "I": "i", "Ş": "s", "Ğ": "g", "Ü": "u", "Ö": "o", "Ç": "c" };

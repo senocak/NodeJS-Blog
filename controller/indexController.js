@@ -20,11 +20,12 @@ module.exports.index = async(req, res, next)=>{
         sira = sira * limit;
     }
     const yazilar = await Yazi.find({}).populate('kategori').sort({ tarih: -1 }).limit(limit).skip(sira); //.count()
-    const aktif_sayfa_yazilar = await Yazi.find({}).populate('kategori').sort({ tarih: -1 }).limit(limit).skip(sira).count()
+    const aktif_sayfa_yazilar = await Yazi.find({}).populate('kategori').sort({ tarih: -1 }).limit(limit).skip(sira).countDocuments()
     if (aktif_sayfa_yazilar == "0") {
-        res.redirect('/'); // If there is no post at all. It will redirect forever.
+        res.redirect('/');
+        console.log("Please seed the db first."); // If there is no post at all. It will redirect forever.
     }else{
-        var toplam = await Yazi.find({}).count();
+        var toplam = await Yazi.find({}).countDocuments();
         toplam = toplam / limit;
         const kategoriler = await Kategori.find({}).sort({ tarih: -1 });
         res.render("index", {yazilar, toplam, aktif, kategoriler});
