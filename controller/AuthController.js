@@ -1,5 +1,6 @@
 var express = require("express");
 const Kullanici = require("../model/Kullanici");
+const Kategori = require("../model/Kategori");
 //const redis = require("../redis");
 
 module.exports.indexGet = async(req, res)=>{

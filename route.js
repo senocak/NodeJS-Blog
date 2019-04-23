@@ -2,8 +2,9 @@ var express = require("express");
 var router = express.Router();
 var indexController = require("./controller/IndexController");
 var YaziController = require("./controller/YaziController");
-var kategoriController = require("./controller/KategoriController");
+var KategoriController = require("./controller/KategoriController");
 var AuthController = require("./controller/AuthController");
+var YorumController = require("./controller/YorumController");
 
 router.get("/", indexController.index);
 router.get("/cv", indexController.cv);
@@ -23,11 +24,13 @@ router.get("/admin/yazi/:yazi_id/sil", AuthController.redirectLogin, YaziControl
 router.get("/admin/yazi/:yazi_id/duzenle", AuthController.redirectLogin, YaziController.yaziDuzenleGet);
 router.post("/admin/yazi/:yazi_id/duzenle", AuthController.redirectLogin, YaziController.yaziDuzenlePost);
 
-router.get("/admin/kategori", AuthController.redirectLogin, kategoriController.kategoriListGet);
-router.get("/admin/kategori/:kategori_id", AuthController.redirectLogin, kategoriController.kategoriListByIdGet);
-router.post("/admin/kategori/ekle", AuthController.redirectLogin, kategoriController.kategoriEklePost);
-router.get("/admin/kategori/:kategori_id/sil", AuthController.redirectLogin, kategoriController.kategoriSil);
-router.get("/admin/kategori/:kategori_id/duzenle", AuthController.redirectLogin, kategoriController.kategoriDuzenleGet);
-router.post("/admin/kategori/:kategori_id/duzenle", AuthController.redirectLogin, kategoriController.kategoriDuzenlePost);
+router.get("/admin/kategori", AuthController.redirectLogin, KategoriController.kategoriListGet);
+router.get("/admin/kategori/:kategori_id", AuthController.redirectLogin, KategoriController.kategoriListByIdGet);
+router.post("/admin/kategori/ekle", AuthController.redirectLogin, KategoriController.kategoriEklePost);
+router.get("/admin/kategori/:kategori_id/sil", AuthController.redirectLogin, KategoriController.kategoriSil);
+router.get("/admin/kategori/:kategori_id/duzenle", AuthController.redirectLogin, KategoriController.kategoriDuzenleGet);
+router.post("/admin/kategori/:kategori_id/duzenle", AuthController.redirectLogin, KategoriController.kategoriDuzenlePost);
 
+router.get("/admin/yorum", AuthController.redirectLogin, YorumController.YorumListGet);
+router.get("/admin/yorum/:yorum_id/sil", AuthController.redirectLogin, YorumController.YorumSilGet);
 module.exports = router;

@@ -1,0 +1,23 @@
+@layout('layouts.app')
+@section('content')
+    <table class="table table-striped w-auto">
+        <thead><tr><th>Yazı</th><th>Email</th><th>Yorum</th><th>Tarih</th><th>#</th></tr></thead>
+        <tbody>
+            @each(y in yorumlar)
+                <tr>
+                    <td>
+                        @each(yazi in y.yazi)
+                            <a href="/yazi/{{yazi.url}}" target="_blank">{{yazi.baslik}}</a>
+                        @endeach
+                    </td>
+                    <td>{{ y.email }}</td>
+                    <td>{{ y.yorum }} </td>
+                    <td>{{ y.tarih.toDateString() }}</td>
+                    <td>
+                        <a href="/admin/yorum/{{ y._id }}/sil" class="btn btn-danger" onclick="return confirm('Silmek İstediğinize Emin Misiniz?')">Sil</a>    
+                    </td>
+                </tr>
+            @endeach
+        </tbody>
+    </table>
+@endsection
