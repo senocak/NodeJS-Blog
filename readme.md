@@ -58,6 +58,6 @@ Daha sonra server'ımızı `node index.js` ile değil de `nodemon index.js` ile 
 - İlgili dizine gidip `redis-cli.exe` dosyasını çalıştırarak görebiliriz.
 
 #NOT
->Projeyi çalıştırmak için nodejs ve mongodb yüklü olduğunu varsayarsak sadece bu dizine gidip `npm install` komutunu konsol ekranında koşmak ve browserdan `http://localhost:4000` adresini ziyaret etmek olacaktır. Ancak ekranda hiç gönderi kayıtlı olmadığını göreceksiniz. Bunun için konsol ekranında sadece seed.js dosyasını çalıştırarak `node seed.js` dummy verilerinin eklendiğini görebiliriz.
+>Projeyi çalıştırmak için nodejs ve mongodb yüklü olduğunu varsayarsak sadece bu dizine gidip `npm install` veya `npm i` komutunu konsol ekranında koşmak ve browserdan `http://localhost:4000` adresini ziyaret etmek olacaktır. Ancak ekranda hiç gönderi kayıtlı olmadığını göreceksiniz. Bunun için konsol ekranında sadece seed.js dosyasını çalıştırarak `node seed.js` dummy verilerinin eklendiğini görebiliriz.
 - Session işlemlerinde loglarda `undefined` hatası alıyorsanız çözümü `redis-server.exe` çalışmadığı içindir.
 - 
